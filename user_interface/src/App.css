@@ -11,3 +11,8 @@
 h3{
   margin-left: 20%;
 }
+
+table,td,th{
+  margin-left: 15%;
+  border: 1px solid white;
+}

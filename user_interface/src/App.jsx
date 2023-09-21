@@ -6,14 +6,13 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  let usuarios = [];
 
   function envioDatos(event){
     event.preventDefault();
     axios.post("http://localhost:5000/usuarios/", { username, password, email})
     .then((resp) => {
       alert("Datos enviados a la base");
-      console.log(resp)
+      obtenerDatos()
     })
     .catch((error) => {
       alert("Error al cargar los datos");
@@ -24,7 +23,23 @@ function App() {
   function obtenerDatos(){
     axios.get("http://localhost:5000/usuarios/")
     .then((resp) => { 
-      usuarios = resp.data.usuarios
+      let usuarios = resp.data.usuarios
+      let tabla = document.getElementById("tabla")
+      usuarios.map(user => {
+        let userFila = document.createElement("tr")
+        let userName = document.createElement("td");
+        let clave = document.createElement("td");
+        let mail = document.createElement("td");
+        userName.innerText = user.username;
+        clave.innerText = user.password;
+        mail.innerText = user.email;
+        userFila.appendChild(userName)
+        userFila.appendChild(clave)
+        userFila.appendChild(mail)
+        tabla.appendChild(userFila);
+        /*item.innerText = `Nombre: ${user.username}; Contraseña: ${user.password}; Email: ${user.email};`
+        lista.appendChild(item)*/
+      })
     })
     .catch((error) => { console.error(error)})
   }
@@ -62,8 +77,17 @@ function App() {
         </form>
       </div>
       <h3>Lista usuarios</h3>
+      <ul id="listado">
+        </ul>
+      <table id="tabla">
+        <tr>
+          <th>Usuario</th>
+          <th>Contraseña</th>
+          <th>Email</th>
+        </tr>
+      </table>
       <div className='divGen'>
-        <ListaUsuarios usuarios={usuarios}/>
+
       </div>
     </>
   )
