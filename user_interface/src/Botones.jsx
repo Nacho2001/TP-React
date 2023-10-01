@@ -2,15 +2,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 
-export const BotonBorrar = () => {
+export const BotonBorrar = (idUsuario) => {
     return (
-        <Button variant="outlined" color="error" startIcon={<DeleteIcon/>}>
+        <Button id={idUsuario} variant="outlined" color="error" startIcon={<DeleteIcon/>}>
         </Button>
     )
 }
-export const BotonEditar = () => {
+export const BotonEditar = (idUsuario) => {
     return (
-        <Button variant="conatained" startIcon={<EditIcon/>}>
+        <Button id={idUsuario} variant="conatained" startIcon={<EditIcon/>}>
         </Button>
     )
 }

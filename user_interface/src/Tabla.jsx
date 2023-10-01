@@ -31,7 +31,7 @@ function Tabla(usuarios){
                             <TableCell>{usuario.username}</TableCell>
                             <TableCell>{usuario.password}</TableCell>
                             <TableCell>{usuario.email}</TableCell>
-                            <Tablecell><BotonEditar/><BotonBorrar/></Tablecell>
+                            <Tablecell><BotonEditar props={usuario.id}/><BotonBorrar props={usuario.id}/></Tablecell>
                         </TableRow>
                     ))}
                 </TableBody>

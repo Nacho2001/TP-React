@@ -25,10 +25,27 @@ const App = () => {
             ObtenerUsuarios()
         })
         .error((error) => {
-            alert("Error al obtener los datos")
+            alert("Error al enviar los datos")
             console.error(error)
         })
     }
+    function borrarUsuario(id){
+        axios.delete(`http://localhost:5000/usuarios/${id}`)
+        .then(() => {
+            alert("Se ha eleminado el usuario con exito")
+            ObtenerUsuarios();
+        })
+        .error((error) =>{
+            alert("Error al eliminar el usuario");
+            console.error(error)
+        })
+    }
+    /*function actualizarUsuario(id){
+        axios.get(`http://localhost:5000/usuarios/${id}`)
+        .then((resp) => {
+            let usuario = resp.data.usuario
+        })
+    }*/
     useEffect(() => {
         ObtenerUsuarios();
     }, [])
