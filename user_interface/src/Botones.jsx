@@ -4,13 +4,13 @@ import { Button } from '@mui/material';
 
 export const BotonBorrar = (idUsuario) => {
     return (
-        <Button id={idUsuario} variant="outlined" color="error" startIcon={<DeleteIcon/>}>
+        <Button id={idUsuario} variant="outlined" color="error" startIcon={<DeleteIcon/>} onClick={borrarUsuario()}>
         </Button>
     )
 }
 export const BotonEditar = (idUsuario) => {
     return (
-        <Button id={idUsuario} variant="conatained" startIcon={<EditIcon/>}>
+        <Button id={idUsuario} variant="conatained" startIcon={<EditIcon/>} onClick={editarUsuario()}>
         </Button>
     )
 }

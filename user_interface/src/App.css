@@ -1,18 +1,8 @@
-.divGen{
-  display: flex;
-  padding: 15%;
+#app{
+  margin: 5%;
+  align-items: center;
 }
 
-
-.divCampo{
-  margin-bottom: 10%;
-}
-
-h3{
-  margin-left: 20%;
-}
-
-table,td,th{
-  margin-left: 15%;
-  border: 1px solid white;
+.TextField{
+  margin: 4%;
 }
