@@ -1,5 +1,5 @@
 const Usuario = require("../models/modelUsuario");
-
+import clienteRedis from "../config/redisClient";
 // Obtiene los datos de todos los usuarios
 exports.obtenerUsuarios = async (req,res) => {
     try { // Intenta realizar la consulta con el metodo findAll
@@ -34,6 +34,32 @@ exports.crearUsuario = async(req,res) => {
     }
 }
 
+const misUsuarios = {"usuario":"pepeNacho","password":"nachoArgento","email":"pepeargento@nacho.dev"}
+
+exports.enviarDatosRedis = async (req,res) => {
+    try {
+        const enviarUsuarioRedis = await clienteRedis.set('usersNacho', JSON.stringify(misUsuarios));
+        if (enviarUsuarioRedis) {
+            console.log("Datos enviados a redis:", enviarUsuarioRedis);
+        }
+    } catch (error) {
+        console.log("Error al enviar datos a Redis: ", error);
+    }
+
+}
+
+// Obtener usuario en redis
+exports.UsuarioRedis = async (req,res) => {
+    try {
+        const obtenerDatosRedis = await clienteRedis.get('usersNacho');
+        if (obtenerDatosRedis) {
+            console.log("Datos encontrados en cache");
+            return res.json({ data: JSON.parse(obtenerDatosRedis) });
+        }
+    } catch (error) {
+        console.log("Ocurrio un error al ejecutar el metodo: ", error)
+    }
+}
 // Busqueda de usuario por id
 exports.obtenerUsuarioUnico = async (req,res) => {
     try { // Busca en la BD un usuario por la clave primaria, en este caso, el id

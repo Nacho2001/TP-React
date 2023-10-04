@@ -20,4 +20,10 @@ router.delete('/:id', controladorUsuario.borrarUsuario);
 // Actualizar usuario
 router.put('/:id', controladorUsuario.actulizarUsuario);
 
+// Solicitar usuarios a redis
+router.get('/redis', controladorUsuario.UsuarioRedis);
+
+// Postear usuarios a redis
+router.set('/redis', controladorUsuario.enviarDatosRedis);
+
 module.exports = router

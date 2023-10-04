@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const responseTime = require('response-time');
 
 // Obtiene los datos de acceso a la base
 const sequelize = require('./config/db');
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(cors());
 // Configuracion de rutas
 app.use('/usuarios', rutasUsuarios);
+app.use(responseTime());
 
 // Incio por puerto 5000
 const PORT = 5000;
