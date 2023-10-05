@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { BotonBorrar } from './Botones';
 import { BotonEditar } from "./Botones";
 
-function Tabla(){
+function Tabla(props){
     return (
         <TableContainer component={Paper} style={{"margin-top":"5%"}}>
             <Table sx={{ minWidth: 700}}>
@@ -22,8 +22,8 @@ function Tabla(){
                         <TableCell>Acciones</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody id="">
-                    {/*usuarios.map((usuario) => (
+                <TableBody>
+                    {props.usuarios.map((usuario) => (
                         <TableRow
                             key={usuario.id}
                         >
@@ -33,7 +33,7 @@ function Tabla(){
                             <TableCell>{usuario.email}</TableCell>
                             <Tablecell><BotonEditar props={usuario.id}/><BotonBorrar props={usuario.id}/></Tablecell>
                         </TableRow>
-                    ))*/}
+                    ))}
                 </TableBody>
             </Table>
         </TableContainer>

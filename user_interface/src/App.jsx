@@ -6,7 +6,6 @@ import { Button } from '@mui/material';
 
 
 const App = () => {
-    let listaUsuarios = [];
     const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -15,7 +14,8 @@ const App = () => {
         axios.get("http://localhost:5000/usuarios/")
         .then((resp) => {
             let usuarios = resp.data.usuarios
-            listaUsuarios = usuarios;
+            let divTabla = document.getElementById("divTabla");
+            divTabla.appendChild(<Tabla props={usuarios}/>);
         })
         //.error((error) => { console.error(error)})
     }
@@ -90,7 +90,7 @@ const App = () => {
                     <Button id="botonEnviar" variant="outlined">Enviar datos</Button>
                 </Stack>
             </form>
-            <Tabla/>
+            <div id="divTabla"></div>
         </div>
     )
 }
