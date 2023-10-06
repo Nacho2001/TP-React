@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import { Stack, TextField } from '@mui/material';
+import TextField from '@material-ui/core/TextField';
 import Tabla from "./Tabla";
-import { Button } from '@mui/material';
+import Button from '@material-ui/core/Button';
+import { Box } from "@material-ui/core";
 
 
 const App = () => {
@@ -83,12 +84,18 @@ const App = () => {
         <div id="app" style={{"margin":"5%"}}>
             <h3>Datos de usuario</h3>
             <form action="" onSubmit={enviarDatos}>
-                <Stack spacing={5}>
-                    <TextField id="username" label="Nombre de usuario" variant="outlined" color="warning" type='text' focused onChange={(event) => {setUsername(event.target.value)}}/>
-                    <TextField id="password" label="Contraseña" variant="outlined" type="password" color="warning" focused onChange={(event) => {setPassword(event.target.value)}}/>
-                    <TextField id="email" label="Correo Electrónico" variant="outlined" type="email" color="warning" focused onChange={(event) => {setEmail(event.target.value)}}/>
-                    <Button id="botonEnviar" variant="outlined">Enviar datos</Button>
-                </Stack>
+                <Box>
+                    <Box>
+                        <TextField id="username" style={{"margin":"5%"}} label="Nombre de usuario"  color="secondary" type='text' focused onChange={(event) => {setUsername(event.target.value)}}/>
+                    </Box>
+                    <Box>
+                        <TextField id="password" style={{"margin":"5%"}} label="Contraseña" type="password" color="secondary" focused onChange={(event) => {setPassword(event.target.value)}}/>
+                    </Box>
+                    <Box>
+                        <TextField id="email" style={{"margin":"5%"}} label="Correo Electrónico" type="email" color="secondary" focused onChange={(event) => {setEmail(event.target.value)}}/>
+                    </Box>
+                </Box>
+                <Button id="botonEnviar" style={{"margin":"5%"}} color="secondary" variant="contained">Enviar datos</Button>
             </form>
             <div id="divTabla"></div>
         </div>

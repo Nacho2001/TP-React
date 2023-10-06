@@ -1,5 +1,5 @@
 const Usuario = require("../models/modelUsuario");
-import clienteRedis from "../config/redisClient";
+//import clienteRedis from "../config/redisClient";
 // Obtiene los datos de todos los usuarios
 exports.obtenerUsuarios = async (req,res) => {
     try { // Intenta realizar la consulta con el metodo findAll

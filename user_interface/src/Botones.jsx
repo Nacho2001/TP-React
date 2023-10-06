@@ -1,6 +1,6 @@
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Button } from '@mui/material';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
 
 export const BotonBorrar = (idUsuario) => {
     return (

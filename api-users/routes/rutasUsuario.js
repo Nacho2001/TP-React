@@ -24,6 +24,6 @@ router.put('/:id', controladorUsuario.actulizarUsuario);
 router.get('/redis', controladorUsuario.UsuarioRedis);
 
 // Postear usuarios a redis
-router.set('/redis', controladorUsuario.enviarDatosRedis);
+router.get('/redis', controladorUsuario.enviarDatosRedis);
 
 module.exports = router
