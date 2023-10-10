@@ -10,15 +10,17 @@ const App = () => {
     const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [usuarios, setUsuarios] = useState({});
 
     function ObtenerUsuarios(){
         axios.get("http://localhost:5000/usuarios/")
         .then((resp) => {
-            let usuarios = resp.data.usuarios
-            let divTabla = document.getElementById("divTabla");
-            divTabla.appendChild(<Tabla props={usuarios}/>);
+            setUsuarios(resp.data.usuarios);
+            console.log(usuarios);
+            /*let divTabla = document.getElementById("divTabla");
+            divTabla.appendChild(<Tabla props={usuarios}/>);*/
         })
-        //.error((error) => { console.error(error)})
+        .error((error) => { console.error(error)})
     }
 
     function enviarDatos(event){
@@ -97,7 +99,7 @@ const App = () => {
                 </Box>
                 <Button id="botonEnviar" style={{"margin":"5%"}} color="secondary" variant="contained">Enviar datos</Button>
             </form>
-            <div id="divTabla"></div>
+            <Tabla props={usuarios}/>
         </div>
     )
 }
