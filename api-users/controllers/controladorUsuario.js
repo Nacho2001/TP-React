@@ -1,5 +1,6 @@
 const Usuario = require("../models/modelUsuario");
-//import clienteRedis from "../config/redisClient";
+const redisClient = require("../config/redisClient");
+
 // Obtiene los datos de todos los usuarios
 exports.obtenerUsuarios = async (req,res) => {
     try { // Intenta realizar la consulta con el metodo findAll
@@ -38,12 +39,21 @@ const misUsuarios = {"usuario":"pepeNacho","password":"nachoArgento","email":"pe
 
 exports.enviarDatosRedis = async (req,res) => {
     try {
-        const enviarUsuarioRedis = await clienteRedis.set('usersNacho', JSON.stringify(misUsuarios));
+        await redisClient.clienteRedis.connect();
+        const enviarUsuarioRedis = await redisClient.clienteRedis.set('usersNacho', JSON.stringify(misUsuarios));
         if (enviarUsuarioRedis) {
             console.log("Datos enviados a redis:", enviarUsuarioRedis);
+            res.status(200).json({
+                Estado:"Ok",
+                mensaje:"Datos enviados a redis"
+            })
         }
     } catch (error) {
         console.log("Error al enviar datos a Redis: ", error);
+        res.status(500).json({
+            estado:"Error",
+            mensaje:"Error al enviar datos a redis"
+        })
     }
 
 }
@@ -51,13 +61,18 @@ exports.enviarDatosRedis = async (req,res) => {
 // Obtener usuario en redis
 exports.UsuarioRedis = async (req,res) => {
     try {
-        const obtenerDatosRedis = await clienteRedis.get('usersNacho');
+        await redisClient.clienteRedis.connect();
+        const obtenerDatosRedis = await redisClient.clienteRedis.get('usersNacho');
         if (obtenerDatosRedis) {
             console.log("Datos encontrados en cache");
             return res.json({ data: JSON.parse(obtenerDatosRedis) });
         }
     } catch (error) {
         console.log("Ocurrio un error al ejecutar el metodo: ", error)
+        res.status(500).json({
+            estado:"Error",
+            mensaje:"Error al obtener los datos de redis"
+        })
     }
 }
 // Busqueda de usuario por id

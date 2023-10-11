@@ -1,2 +1,2 @@
-const clienteRedis = redis.createClient({ url: "redis://nachoUsers@31.187.76.251:6379"});
-export default clienteRedis;
+const redis = require('redis');
+exports.clienteRedis = redis.createClient({ url: "redis://default:password@localhost:6379"});

@@ -5,6 +5,12 @@ const controladorUsuario = require('../controllers/controladorUsuario');
 
 // Define rutas a las consultas del controller
 
+// Solicitar usuarios a redis
+router.get('/redis', controladorUsuario.UsuarioRedis);
+
+// Postear usuarios a redis
+router.post('/redis', controladorUsuario.enviarDatosRedis);
+
 // Obtener usuarios
 router.get('/', controladorUsuario.obtenerUsuarios);
 
@@ -20,10 +26,6 @@ router.delete('/:id', controladorUsuario.borrarUsuario);
 // Actualizar usuario
 router.put('/:id', controladorUsuario.actulizarUsuario);
 
-// Solicitar usuarios a redis
-router.get('/redis', controladorUsuario.UsuarioRedis);
 
-// Postear usuarios a redis
-router.get('/redis', controladorUsuario.enviarDatosRedis);
 
 module.exports = router
