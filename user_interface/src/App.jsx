@@ -10,17 +10,17 @@ const App = () => {
     const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [usuarios, setUsuarios] = useState({});
-
+    //const [usuarios, setUsuarios] = useState({});
+    let usuarios
     function ObtenerUsuarios(){
         axios.get("http://localhost:5000/usuarios/")
         .then((resp) => {
-            setUsuarios(resp.data.usuarios);
+            usuarios = resp.data.usuarios
             console.log(usuarios);
             /*let divTabla = document.getElementById("divTabla");
             divTabla.appendChild(<Tabla props={usuarios}/>);*/
         })
-        .error((error) => { console.error(error)})
+        //.error((error) => { console.error(error)})
     }
 
     function enviarDatos(event){
