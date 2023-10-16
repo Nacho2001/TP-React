@@ -35,25 +35,29 @@ const App = () => {
         obtenerUsuarios();
     }, [])
     return (
-        <div id="app" style={{"margin":"5%"}}>
+        <div id="app" width="50%" style={{"margin":"5%"}}>
             <h3>Datos de usuario</h3>
-            <form action="" onSubmit={enviarDatos}>
-                <Box>
+            <div>   
+                <form action="" onSubmit={enviarDatos}>
                     <Box>
-                        <TextField id="username" style={{"margin":"5%"}} label="Nombre de usuario"  color="secondary" type='text' focused onChange={(event) => {setUsername(event.target.value)}}/>
+                        <Box>
+                            <TextField id="username" style={{"margin":"5%"}} label="Nombre de usuario"  color="secondary" type='text' focused onChange={(event) => {setUsername(event.target.value)}}/>
+                        </Box>
+                        <Box>
+                            <TextField id="password" style={{"margin":"5%"}} label="Contraseña" type="password" color="secondary" focused onChange={(event) => {setPassword(event.target.value)}}/>
+                        </Box>
+                        <Box>
+                            <TextField id="email" style={{"margin":"5%"}} label="Correo Electrónico" type="email" color="secondary" focused onChange={(event) => {setEmail(event.target.value)}}/>
+                        </Box>
                     </Box>
-                    <Box>
-                        <TextField id="password" style={{"margin":"5%"}} label="Contraseña" type="password" color="secondary" focused onChange={(event) => {setPassword(event.target.value)}}/>
-                    </Box>
-                    <Box>
-                        <TextField id="email" style={{"margin":"5%"}} label="Correo Electrónico" type="email" color="secondary" focused onChange={(event) => {setEmail(event.target.value)}}/>
-                    </Box>
-                </Box>
-                <Button id="botonEnviar" style={{"margin":"5%"}} color="secondary" variant="contained">Enviar datos</Button>
-            </form>
-            {<Tabla2 usuarios={usuarios}/>}
+                    <Button id="botonEnviar" style={{"margin":"5%"}} color="secondary" variant="contained">Enviar datos</Button>
+                </form>
+            </div>
+            <div>
+                <Tabla2 usuarios={usuarios}/>
+            </div>
         </div>
     )
 }
 
-export default App
+export default App;
