@@ -9,7 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import { BotonBorrar } from './Botones';
 import { BotonEditar } from "./Botones";
 
-function Tabla(props){
+function Tabla(usuarios){
+    console.log(usuarios);
     return (
         <TableContainer component={Paper} style={{"margin-top":"5%"}}>
             <Table sx={{ minWidth: 700}}>
@@ -31,7 +32,7 @@ function Tabla(props){
                             <TableCell>{usuario.username}</TableCell>
                             <TableCell>{usuario.password}</TableCell>
                             <TableCell>{usuario.email}</TableCell>
-                            <Tablecell><BotonEditar props={usuario.id}/><BotonBorrar props={usuario.id}/></Tablecell>
+                            <Tablecell><BotonEditar idUsuario={usuario.id}/><BotonBorrar idUsuario={usuario.id}/></Tablecell>
                         </TableRow>
                     ))}
                 </TableBody>
