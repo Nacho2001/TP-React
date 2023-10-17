@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Box } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import Tabla2 from "./Tabla/Tabla";
 import axios from "axios";
 import { llamadaUsuarios } from "./models/funcionesUsuarios";
@@ -35,9 +35,9 @@ const App = () => {
         obtenerUsuarios();
     }, [])
     return (
-        <div id="app" width="50%" style={{"margin":"5%"}}>
-            <h3>Datos de usuario</h3>
-            <div>   
+        <Box style={{"margin":"5%"}} display="flex" flexDirection="row" justifyContent="flex-end">
+            <Box width={30}>   
+                <h3>Datos de usuario</h3>
                 <form action="" onSubmit={enviarDatos}>
                     <Box>
                         <Box>
@@ -52,11 +52,22 @@ const App = () => {
                     </Box>
                     <Button id="botonEnviar" style={{"margin":"5%"}} color="secondary" variant="contained">Enviar datos</Button>
                 </form>
-            </div>
-            <div>
+            </Box>
+            <Box>
                 <Tabla2 usuarios={usuarios}/>
-            </div>
-        </div>
+            </Box>
+            <Box display="flex" justifyContent="flex-center" m={1} p={1} bgcolor="background.paper">
+                <Box p={1} bgcolor="grey.300">
+                Item 1
+                </Box>
+                <Box p={1} bgcolor="grey.300">
+                Item 1
+                </Box>
+                <Box p={1} bgcolor="grey.300">
+                Item 1
+                </Box>
+            </Box>
+        </Box>
     )
 }
 
